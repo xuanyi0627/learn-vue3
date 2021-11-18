@@ -32,7 +32,7 @@
         },
         methods: {
             handleAddItem() {
-                this.list.push(this.inputValue)
+                this.todos.push({text: this.inputValue})
                 this.inputValue = ''
             }
         },
