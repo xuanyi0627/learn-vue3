@@ -17,11 +17,17 @@
             <div>{{content}}</div>
             <button @click="welcome">有顾客来</button>
             <button v-on:click="bye">顾客离开</button>
+            <div>
+                <div v-if="isShowMeal">{{setMeal}}</div>
+                <button @click="changeVIP">VIP</button>
+            </div>
         </div>
         `,
         data() {
             return {
-                content: ''
+                content: '',
+                isShowMeal: false,
+                setMeal: "1231231231"
             }
         },
         methods: {
@@ -30,6 +36,9 @@
             },
             bye(){
                 this.content = "顾客离开"
+            },
+            changeVIP() {
+                this.isShowMeal = !this.isShowMeal
             }
         }
     }).mount('#app')
