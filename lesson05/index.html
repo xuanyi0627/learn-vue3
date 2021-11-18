@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Component</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+    <div id="app"></div>
+</body>
+<script>
+    const app = Vue.createApp({
+        template:`
+            <div>
+                <my-title />
+                <input v-model="inputValue" />
+                <button v-on:click="handleAddItem">add</button>
+                <my-list v-for="(todo, index) in todos" :item="todo" :index="index" />
+            </div>
+        `,
+        data() {
+            return {
+                inputValue: '',
+                todos: [
+                    { text: 'Learn JavaScript' },
+                    { text: 'Learn Vue' },
+                    { text: 'Build something awesome' }
+                ]
+            }
+        },
+        methods: {
+            handleAddItem() {
+                this.list.push(this.inputValue)
+                this.inputValue = ''
+            }
+        },
+    })
+    app.component('my-title', {
+        template: `
+        <div>
+            <h1 style="text-align:center">This is a title!</h1>
+        </div>
+        `
+    })
+    app.component('my-list', {
+        props:['item', 'index'],
+        template: `
+            <div>
+                <ul>
+                    <li>{{index}} - {{item.text}}</li>
+                </ul>
+            </div>
+        `
+    })
+    app.mount("#app")
+</script>
+</html>
