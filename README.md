@@ -29,3 +29,7 @@
 > 创建一个 index 文件，了解了 vue 的生命周期。
 
 ![](https://newimg.jspang.com/Vuelifecycle.png)
+
+## lesson08
+
+> 创建一个 index 文件，编写一个组件，认识了 v-once v-html。
