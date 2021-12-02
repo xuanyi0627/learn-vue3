@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo12</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+
+<body>
+    <div id="app"></div>
+</body>
+<script>
+    const rootComponent = {
+        template: `
+            <div>
+                <h2>{{message}}</h2>
+                <h2> {{total}}</h2>
+                <h2>总和：{{newTotal}}</h2>
+                <button @click="addCount">再买一个</button>
+            </div>
+        `,
+        data() {
+            return {
+                message: 2,
+                price: 10,
+                count: 2,
+                newTotal:20
+            }
+        },
+        methods: {
+            addCount(){
+                this.count++
+            }
+        },
+        computed:{
+            total(){
+                console.log('....count changed')
+                return this.price * this.count
+            }
+        },
+        watch: {
+            count(current,prev){
+                console.log('watch changed')
+                console.log('现在的值：',current)
+                console.log('变化前的值：',prev)
+                this.newTotal=this.price * current
+            }
+        }
+    }
+    const app = Vue.createApp(rootComponent)
+    app.mount("#app")
+</script>
+
+<style>
+    .one {color: red;}
+    .two {color: green;}
+    .three{color:orange;}
+</style>
+
+</html>

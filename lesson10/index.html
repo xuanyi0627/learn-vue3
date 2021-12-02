@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo10</title>
+    <script src="https://unpkg.com/vue@next"></script>
+</head>
+
+<body>
+    <div id="app"></div>
+</body>
+<script>
+    const rootComponent = {
+        template: `
+            <div>
+                <h2 :[name]="message" @click="handleClick" :class="message==1 ? 'one' : 'two'">{{ message == 1 ? "1" : "0" }}</h2>
+                <h2 :[name]="message" v-if="message==1" class="one">{{ message}}</h2>
+                <h2 :[name]="message" v-if="message==0" class="two">{{ message}}</h2>
+                <h2 :[name]="message" v-if="message>1" class="three">{{message}}</h2>
+                <div>
+                    <h2 :[name]="message" v-if="message>1" class="three">{{message}}</h2>
+                    <h2 v-else class="one">{{message}}</h2>
+                </div>
+            </div>
+        `,
+        data() {
+            return {
+                message: 2,
+                name: "title"
+            }
+        },
+        methods: {
+            handleClick() {
+                alert(this.$data.message)
+            }
+        },
+    }
+    const app = Vue.createApp(rootComponent)
+    app.mount("#app")
+</script>
+
+<style>
+    .one {color: red;}
+    .two {color: green;}
+    .three{color:orange;}
+</style>
+
+</html>

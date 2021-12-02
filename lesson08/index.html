@@ -15,7 +15,8 @@
     const app = Vue.createApp({
         data() {
             return {
-                message: '<i>jspang.com</i>'
+                message: '<i>jspang.com</i>',
+                count: 5
             }
         },
         methods: {
@@ -25,7 +26,8 @@
         },
         template: `
             <div>
-                <h2 v-on:click='handleItemClick' v-html="message" v-once></h2>
+                <h2 v-on:click='handleItemClick' v-html="message" v-once v-bind:title="message"></h2>
+                <div>{{ count > 2 ? '大' : '小' }}</div>
             </div>
         `
     })
