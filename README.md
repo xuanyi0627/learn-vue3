@@ -57,3 +57,7 @@
   method、watch 和 computed 三者如果都能实现相同的功能，它们之间的取舍和使用优先级。
   1. computed 和 method 都能实现的功能，建议使用 computed,因为有缓存，不用渲染页面就刷新。
   2. computed 和 watch 都能实现的功能，建议使用 computed，因为更加简洁。
+
+## lesson13
+
+> 创建一个 index 文件，了解了 模板样式绑定。
